@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root { --background: #FDFBF7; --foreground: #6a5b4e; }
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-crimson: #7A2828;
+  --color-forest: #2C4C3B;
+  --color-gold: #C5A880;
+  --font-sans: var(--font-lato), Arial, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--background); color: var(--foreground); font-family: var(--font-lato), Arial, sans-serif; }
+::selection { background: #e9ddc9; color: #7A2828; }
+button { cursor: pointer; }
+button:disabled { cursor: wait; }
+:focus-visible { outline: 2px solid #7A2828; outline-offset: 4px; }
+.invitation {
+  position: relative;
+  width: calc(100% - 24px);
+  isolation: isolate;
+  max-width: 1000px;
+  margin: 22px auto;
+  padding: 42px 22px 72px;
+  border: 1px solid #C5A880;
+  background: var(--background);
+  box-shadow: 0 12px 60px #7a604308;
+}
+.invitation::before { content: ""; position: absolute; inset: 5px; border: 1px solid #C5A880; pointer-events: none; z-index: -1; }
+.border-flourish { position: absolute; left: 50%; z-index: 2; display: flex; width: 52px; justify-content: center; transform: translateX(-50%); background: var(--background); }
+.border-flourish-top { top: -14px; }
+.border-flourish-bottom { bottom: -14px; transform: translateX(-50%) rotate(180deg); }
+.floral-corner { position: absolute; width: 60px; height: auto; pointer-events: none; z-index: -1; }
+.floral-top-left { top: 13px; left: 10px; }
+.floral-top-right { top: 13px; right: 10px; transform: scaleX(-1); }
+.floral-bottom-left { bottom: 13px; left: 10px; }
+.floral-bottom-right { bottom: 13px; right: 10px; transform: scaleX(-1); }
+.hero-art { max-width: 680px; }
+.couple-names { font-size: clamp(1.7rem, 5.5vw, 3.9rem); line-height: 1.2; letter-spacing: .035em; }
+.celebrations { max-width: 900px; margin-top: 34px; }
+.rsvp-section { margin-top: 48px; }
+.rsvp-card { outline: 1px solid #C5A88080; outline-offset: -6px; border-radius: 2px; background: var(--background); box-shadow: 0 8px 28px #7a60430a; }
+.form-control { width: 100%; border: 1px solid #C5A880; border-radius: 3px; background: var(--background); padding: 12px 14px; min-height: 48px; color: #2C4C3B; transition: border-color 160ms, box-shadow 160ms; }
+.form-control::placeholder { color: #817867; }
+.form-control:focus { outline: none; border-color: #7A2828; box-shadow: 0 0 0 3px #7A282810; }
+.form-control:disabled { opacity: .55; cursor: not-allowed; }
+.travel-section { max-width: 900px; margin-top: 52px; }
+.travel-card { background: var(--background); box-shadow: 0 3px 14px #7a604306; }
+.invitation-footer { max-width: 520px; margin-top: 38px; }
+@media (min-width: 640px) {
+  .invitation { width: calc(100% - 56px); margin: 28px auto; padding: 50px 42px 78px; }
+  .floral-corner { width: 110px; }
+  .floral-top-left { top: 20px; left: 18px; }
+  .floral-top-right { top: 20px; right: 18px; }
+  .floral-bottom-left { bottom: 20px; left: 18px; }
+  .floral-bottom-right { bottom: 20px; right: 18px; }
+  .celebrations { margin-top: 40px; }
+  .rsvp-section { margin-top: 64px; }
+  .travel-section { margin-top: 60px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }

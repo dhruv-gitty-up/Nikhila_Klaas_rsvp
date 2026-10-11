@@ -2,6 +2,7 @@ import Image from "next/image";
 import { BedDouble, Music2, Plane } from "lucide-react";
 import { CelebrationCoupleIcon, Fleur, Ornament, RingsIcon, TempleIcon } from "@/components/ornaments";
 import { RsvpForm } from "@/components/rsvp-form";
+import { RsvpStatusCard } from "@/components/rsvp-status";
 import mandap from "@/public/images/wedding-mandap.png";
 import kolam from "@/public/images/floral-kolam.png";
 import bottomKolam from "@/public/images/floral-kolam-bottom.png";
@@ -63,6 +64,10 @@ export default function Home() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section aria-labelledby="status-title" className="mx-auto mt-10 max-w-[620px] sm:mt-12">
+        <RsvpStatusCard />
       </section>
 
       <footer className="invitation-footer mx-auto text-center">

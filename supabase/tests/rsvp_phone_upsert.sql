@@ -23,6 +23,9 @@ begin
       message = excluded.message
     returning id::text into first_id;
 
+  update public.rsvps set admin_comments = 'Administrator room notes',
+    room_confirmed = true where phone = test_phone;
+
   insert into public.rsvps (names, phone, attending, guest_count, message)
     values ('Updated phone upsert verification', test_phone, false, 0, 'Updated response')
     on conflict (phone) do update set names = excluded.names,
@@ -38,8 +41,9 @@ begin
     select 1 from public.rsvps where phone = test_phone
       and names = 'Updated phone upsert verification'
       and not attending and guest_count = 0 and message = 'Updated response'
+      and admin_comments = 'Administrator room notes' and room_confirmed = true
   ) then
-    raise exception 'Updated RSVP values were not persisted';
+    raise exception 'Updated RSVP values were not persisted or admin fields were overwritten';
   end if;
 
   begin

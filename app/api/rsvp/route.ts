@@ -37,7 +37,8 @@ export async function POST(request: Request) {
     if (!supabase) {
       return NextResponse.json({ error: "RSVPs aren’t open just yet. Please check back soon." }, { status: 503 });
     }
-    // Save only validated columns; keep the phone identifier and guest replies private.
+    // The validator constructs exactly the five guest-editable fields. Never
+    // pass raw input: admin_comments and room_confirmed must stay unchanged.
     const { error } = await supabase.from("rsvps").upsert(result.data, { onConflict: "phone" });
     if (error) {
       console.error("RSVP upsert failed", { code: error.code });
